@@ -120,3 +120,17 @@ let results: Result[] = [fb1, fb2, c1, c2, m1, m2];
 results.forEach((e) => {
   console.log(e.result());
 });
+
+console.log('Calvin 1');
+
+for (const result of results) {
+  if (result.winner === 'Calvin') {
+    console.log(result.result());
+  }
+}
+
+console.log('Calvin 2');
+
+for (const result of results.filter(r => r.winner === 'Calvin')) {
+  console.log(result.result());
+}
