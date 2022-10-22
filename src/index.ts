@@ -80,7 +80,8 @@ class Calvinball implements Result {
     
     this.winner = winner;
     this.date = date;
-    this.#endScore = Math.floor(Math.random() * 100 + 10);
+    //                                          ((max+1)-min)+ min
+    this.#endScore = Math.floor(Math.random() * ((100+1)-10) + 10);
   }
 
   getWinner(): String {
