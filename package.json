@@ -2,6 +2,7 @@
   "scripts": {
     "start": "node buildt/index.js"
   },
+  "type": "commonjs",
 
   "devDependencies": {
     "webpack-cli": "^4.10.0",
