@@ -68,7 +68,8 @@ class Calvinball {
         _Calvinball_endScore.set(this, void 0);
         this.winner = winner;
         this.date = date;
-        __classPrivateFieldSet(this, _Calvinball_endScore, Math.floor(Math.random() * 100 + 10), "f");
+        //                                          ((max+1)-min)+ min
+        __classPrivateFieldSet(this, _Calvinball_endScore, Math.floor(Math.random() * ((100 + 1) - 10) + 10), "f");
     }
     getWinner() {
         return this.winner;
@@ -92,13 +93,36 @@ class Calvinball {
     }
 }
 _Calvinball_endScore = new WeakMap();
-let fb1 = new Football("Real Madrid", new Date(Date.now()), 6, 2);
-let fb2 = new Football("Sevilla", new Date(Date.now()), 3, 1);
-let c1 = new Calvinball("Calvin", new Date(Date.now()));
-let c2 = new Calvinball("Hobbes", new Date(Date.now()));
-let m1 = new Marathon("Ndereba", new Date(Date.now()), 112, 50);
-let m2 = new Marathon("Desisa", new Date(Date.now()), 117, 12);
+let fb1 = new Football("Real Madrid", new Date(2001, 10, 14, 18, 30), 6, 2);
+let fb2 = new Football("Sevilla", new Date(2009, 1, 1, 7, 20), 3, 1);
+let c1 = new Calvinball("Calvin", new Date(2005, 0, 4, 16, 55));
+let c2 = new Calvinball("Hobbes", new Date(2006, 7, 6, 15, 15));
+let m1 = new Marathon("Ndereba", new Date(2017, 3, 23, 19, 30), 112, 50);
+let m2 = new Marathon("Desisa", new Date(2011, 11, 24, 22, 20), 117, 12);
 let results = [fb1, fb2, c1, c2, m1, m2];
+let results2 = [...results];
 results.forEach((e) => {
     console.log(e.result());
+});
+console.log('Calvin 1');
+for (const result of results) {
+    if (result.winner === 'Calvin') {
+        console.log(result.result());
+    }
+}
+console.log('Calvin 2');
+for (const result of results.filter(r => r.winner === 'Calvin')) {
+    console.log(result.result());
+}
+results2.sort((a, b) => {
+    if (a.getDate() > b.getDate()) {
+        return 1;
+    }
+    if (b.getDate() > a.getDate()) {
+        return -1;
+    }
+    return 0;
+});
+results2.forEach((e) => {
+    console.log(e.getDate());
 });
