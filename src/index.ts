@@ -116,7 +116,7 @@ let m1: Marathon = new Marathon("Ndereba", new Date(2017,3,23,19,30), 112, 50);
 let m2: Marathon = new Marathon("Desisa", new Date(2011,11,24,22,20), 117,12);
 
 let results: Result[] = [fb1, fb2, c1, c2, m1, m2];
-
+let results2: Result[] = [...results];
 results.forEach((e) => {
   console.log(e.result());
 });
@@ -134,3 +134,17 @@ console.log('Calvin 2');
 for (const result of results.filter(r => r.winner === 'Calvin')) {
   console.log(result.result());
 }
+
+results2.sort((a, b) => {
+  if (a.getDate() > b.getDate()) {
+    return 1;
+  }
+  if (b.getDate() > a.getDate()) {
+    return -1;
+  }
+  return 0;
+});
+
+results2.forEach((e) => {
+  console.log(e.getDate());
+});
